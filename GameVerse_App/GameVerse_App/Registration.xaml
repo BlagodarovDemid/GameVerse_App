@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GameVerse_App"
+             x:Class="GameVerse_App.Registration" Background="{StaticResource MainColor}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.55*"/>
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Image Source="/Resources/drawable/GameVerse_icon.png" Aspect="AspectFit"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <FlexLayout HorizontalOptions="Fill" VerticalOptions="Fill" AlignItems="Stretch" AlignContent="Center" Direction="Column">
+
+                <Grid Margin="20,0,20,0" HeightRequest="40" BackgroundColor="Transparent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <local:CustomPickerRegion x:Name="Region" Grid.Column="0" HorizontalOptions="Start" Margin="0,0,20,0" HeightRequest="40" WidthRequest="65" CornerRadius="-1" BorderWidth="5" BorderColor="#FF4F4F4F" Background="Black" TextColor="Transparent" SelectedIndexChanged="Region_SelectedIndexChanged">
+                        <local:CustomPickerRegion.Items>
+                            <x:String>Российская Федерация</x:String>
+                            <x:String>США</x:String>
+                            <x:String>Франция</x:String>
+                            <x:String>Германия</x:String>
+                            <x:String>Не выбран</x:String>
+                        </local:CustomPickerRegion.Items>
+                    </local:CustomPickerRegion>
+
+                    <Label x:Name="RegionDisplay" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold" FontSize="16" TextColor="White"/>
+                </Grid>
+
+                <local:CustomEntry x:Name="Login" Placeholder="Введите эл. почту" Margin="20,20,20,0" Style="{StaticResource RegistrationAndAuthorizationEntry}" Keyboard="Email"/>
+                <local:CustomEntry x:Name="Password" Placeholder="Введите пароль" IsPassword="True" Margin="20,10,20,0" Style="{StaticResource RegistrationAndAuthorizationEntry}"/>
+                <local:CustomEntry x:Name="ConfirmPassword" Placeholder="Введите пароль повторно" IsPassword="True" Margin="20,10,20,0" Style="{StaticResource RegistrationAndAuthorizationEntry}"/>
+
+                <local:CustomButton Margin="20,40,20,0" Text="Зарегестрироваться" Style="{StaticResource RegistrationAndAuthorizationButton}" Clicked="RegistrationButton_Clicked"/>
+            </FlexLayout>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <local:CustomButton Text="Назад" Style="{StaticResource RegAndAuTextButton}" Pressed="BackButton_Pressed"/>
+        </Grid>
+        
+    </Grid>
+
+</ContentPage>

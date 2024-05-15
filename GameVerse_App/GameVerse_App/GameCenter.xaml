@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GameVerse_App.GameCenter" Appearing="GameCenter_Appearing" Background="{StaticResource MainColor}" Padding="10,0,10,0">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" HorizontalOptions="Fill" VerticalOptions="Fill">
+            <Label x:Name="GameTitle" Style="{StaticResource GameCenterTitle}"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Image x:Name="GameImage" Style="{StaticResource GameCenterImage}"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Label x:Name="GameTitleDescription" Grid.Row="0" Style="{StaticResource GameCenterTitleDescription}"/>
+            <Label x:Name="GameDevelopers" Grid.Row="1" Style="{StaticResource GameCenterDevelopers}"/>
+            <Label x:Name="GamePublicDate" Grid.Row="2" Style="{StaticResource GameCenterPublicDate}"/>
+            <Grid Grid.Row="2" HorizontalOptions="End" VerticalOptions="End">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.36*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Grid.Column="0" Text="Любимая игра" FontSize="15" FontAttributes="Bold" TextColor="GhostWhite" WidthRequest="115" HeightRequest="35" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                <CheckBox x:Name="FavouriteGame" Grid.Column="1" Color="#48A9E0" CheckedChanged="FavouriteGame_CheckedChanged"/>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Text="Достижения" FontSize="22" FontAttributes="Bold" TextColor="White" HeightRequest="35" HorizontalOptions="Fill" VerticalOptions="Start"/>
+            <Frame Grid.Row="1" BackgroundColor="Transparent" BorderColor="#72787E" Padding="5,0,0,0">
+                <ScrollView Grid.Row="1" Orientation="Horizontal">
+                    <FlexLayout x:Name="GameAchievements" HorizontalOptions="Fill" VerticalOptions="Fill" AlignItems="Center"/>
+                </ScrollView>
+            </Frame>
+        </Grid>
+        <Line Grid.RowSpan="3" HeightRequest="2" BackgroundColor="#72787E" HorizontalOptions="Fill" VerticalOptions="End"/>
+        
+        <Grid Grid.Row="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Text="Системные рекомендации:" FontSize="22" FontAttributes="Bold" TextColor="White" HeightRequest="35" HorizontalOptions="Fill" VerticalOptions="Start"/>
+            <Frame Grid.Row="1" BackgroundColor="Transparent" BorderColor="#72787E" Padding="5,0,0,0">
+                <ScrollView Grid.Row="1">
+                    <FlexLayout Padding="7,0,0,0" Direction="Column" AlignItems="Start">
+                        <Label x:Name="GameOS" Style="{StaticResource GameCenterSysReq}"/>
+                        <Label x:Name="GameCPUmin" Style="{StaticResource GameCenterSysReq}"/>
+                        <Label x:Name="GameRAMmin" Style="{StaticResource GameCenterSysReq}"/>
+                        <Label x:Name="GameGPUmin" Style="{StaticResource GameCenterSysReq}"/>
+                        <Label x:Name="GameSpacing" Style="{StaticResource GameCenterSysReq}"/>
+                    </FlexLayout>
+                </ScrollView>
+            </Frame>
+
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GameVerse_App.GameBlock">
+
+    <Grid WidthRequest="370" HeightRequest="120" BackgroundColor="#484c61" HorizontalOptions="Center" VerticalOptions="Start">
+        <Label x:Name="GameID" IsVisible="false"/>
+        <ImageButton x:Name="GameImage" Source="game_image_default.png" Aspect="AspectFill" WidthRequest="370" HeightRequest="100" HorizontalOptions="Fill" VerticalOptions="Start" Pressed="GameImage_Pressed"/>
+        <StackLayout HorizontalOptions="Fill" VerticalOptions="End" Spacing="0">
+            <Label x:Name="GameTitle" Text="Title" TextColor="White" FontSize="16" FontAttributes="Bold" WidthRequest="280" HeightRequest="20" HorizontalOptions="Start" VerticalOptions="Center"/>
+        </StackLayout>
+        <Grid BackgroundColor="#a1b5d0" WidthRequest="90" HeightRequest="20" HorizontalOptions="End" VerticalOptions="End">
+            <Label x:Name="GameIsFree" Text="Бесплатно" TextColor="White" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center" WidthRequest="80" HorizontalOptions="Start" VerticalOptions="Center" Padding="0,0,15,0"/>
+            <Label x:Name="GamePrice" Text="9999" TextColor="White" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center" WidthRequest="65" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Image x:Name="GamePriceIcon" Source="Ruble_icon.png" WidthRequest="25" HeightRequest="25" HorizontalOptions="End" VerticalOptions="Center"/>
+        </Grid>
+    </Grid>
+</ContentView>

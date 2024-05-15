@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GameVerse_App.Profile" Appearing="Profile_Appearing" Background="{StaticResource MainColor}" Padding="10,10,10,0">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid HorizontalOptions="Fill" VerticalOptions="Start">
+                <ImageButton x:Name="Avatar" Style="{StaticResource ProfileImage}" Pressed="ProfileImage_Pressed"/>
+                <ImageButton x:Name="ChangeInfo" Source="pencil_edit_icon.png" Style="{StaticResource ProfileChangeInfo}" Pressed="ChangeInfo_Pressed"/>
+                <Label x:Name="Nickname" Text="Leonade" Style="{StaticResource ProfileNickname}"/>
+                <Grid WidthRequest="190" HorizontalOptions="Center" VerticalOptions="End" Margin="30,0,0,5">
+                    <ImageButton x:Name="Region" Style="{StaticResource ProfileRegionInfo}" Pressed="ChangeRegion_Pressed"/>
+                    <ImageButton x:Name="Twitch" Source="twitch_icon.png" Style="{StaticResource ProfileTwitch}" ClassId="https://www.twitch.tv/" Pressed="Twitch_Pressed"/>
+                    <ImageButton x:Name="Facebook" Source="facebook_icon.png" Style="{StaticResource ProfileFacebook}" ClassId="https://facebook.com/" Pressed="Facebook_Pressed"/>
+                    <ImageButton x:Name="YouTube" Source="youtube_icon.png" Style="{StaticResource ProfileYouTube}" ClassId="https://www.youtube.com/" Pressed="YouTube_Pressed"/>
+                </Grid>
+            </Grid>
+            <Label x:Name="Login" Text="Login: d.a.Blagodarov@gmail.com" FontSize="Medium" FontAttributes="Bold" TextColor="GhostWhite" VerticalOptions="End"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid HorizontalOptions="Fill" VerticalOptions="Fill" Padding="0,5,0,0">
+                <Label Text="Обо мне:" Style="{StaticResource ProfileAboutMe}"/>
+                <Frame Style="{StaticResource ProfileFrameAboutMe}">
+                    <Label x:Name="AboutMe" FontSize="Medium" FontAttributes="Bold" TextColor="GhostWhite" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit"/>
+                </Frame>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid HorizontalOptions="Fill" VerticalOptions="Fill" Padding="0,5,0,0">
+                <Label Text="Любимая игра:" Style="{StaticResource ProfileFavouriteGame}"/>
+                <FlexLayout x:Name="GameFavourite" WidthRequest="370" HeightRequest="130" BackgroundColor="#484c61" HorizontalOptions="Fill" VerticalOptions="End" Padding="0,0,0,-10"/>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="3" Padding="0,5,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Text="Достижения" FontSize="22" FontAttributes="Bold" TextColor="White" HeightRequest="35" HorizontalOptions="Fill" VerticalOptions="Start"/>
+            <Frame Grid.Row="1" BackgroundColor="Transparent" BorderColor="#72787E" Padding="5,0,0,0">
+                <ScrollView Grid.Row="1" Orientation="Horizontal">
+                    <FlexLayout x:Name="GameAchievements" HorizontalOptions="Fill" VerticalOptions="Fill" AlignItems="Center"/>
+                </ScrollView>
+            </Frame>
+        </Grid>
+        <Line Grid.RowSpan="1" HeightRequest="2" BackgroundColor="#72787E" HorizontalOptions="Fill" VerticalOptions="End"/>
+
+    </Grid>
+</ContentPage>

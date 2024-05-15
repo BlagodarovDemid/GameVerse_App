@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:GameVerse_App"
+       xmlns:sys="clr-namespace:System;assembly=netstandard"
+       Title="GameVerse_App"
+       x:Class="GameVerse_App.AppShell" FlyoutBackgroundColor="#12121d">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="Primary" Color="#48A9E0"/>
+
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.ForegroundColor" Value="Black" />
+                <Setter Property="Shell.NavBarIsVisible" Value="False" />
+            </Style>
+
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+
+            <Style Class="FlyoutItemImageStyle" TargetType="Image">
+                <Setter Property="Source" Value="{Binding FlyoutIcon}"/>
+                <Setter Property="Margin" Value="20,5,5,5" />
+                <Setter Property="HeightRequest" Value="45"/>
+                <Setter Property="Opacity" Value="0.9"/>
+            </Style>
+            <Style Class="FlyoutItemLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style Class="FlyoutItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#12121d" />
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="White" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#12121d" />
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="#48A9E0" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style Class="MenuItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="GhostWhite" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <Shell.FlyoutHeader>
+        <Grid BackgroundColor="#a1b5d0" HeightRequest="200">
+            <Image Aspect="AspectFill" Source="menu_background.png" />
+            <Frame Padding="0"
+                WidthRequest="60" 
+                HeightRequest="60"
+                Background="Transparent"
+                HorizontalOptions="Start" 
+                VerticalOptions="Start"
+                CornerRadius="50"
+                BorderColor="Black"
+                Margin="10,10,0,0">
+                <ImageButton x:Name="UserAvatar"
+                             Aspect="AspectFill"
+                             Source="user_avatar_default.png"
+                             BackgroundColor="Transparent"
+                             HorizontalOptions="Fill" 
+                             VerticalOptions="Fill"
+                             Pressed="UserAvatar_Pressed"/>
+            </Frame>
+            <Label x:Name="UserLogin"
+                   Text="example@gmail.com"
+                   TextColor="White"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   HeightRequest="40"
+                   WidthRequest="150"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="End"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center"
+                   Padding="20,0,0,0"/>
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="Магазин" Icon="Shop_icon.png">
+        <ShellContent ContentTemplate="{DataTemplate local:ShopList}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Библиотека" Icon="library_icon.png">
+        <ShellContent ContentTemplate="{DataTemplate local:Library}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Достижения" Icon="achievement_icon.png">
+        <ShellContent ContentTemplate="{DataTemplate local:Achievements}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Соглашение" Icon="agreement_icon.png">
+        <ShellContent ContentTemplate="{DataTemplate local:Agreement}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Сменить аккаунт" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Сменить аккаунт" Icon="switch_icon.png" ContentTemplate="{DataTemplate local:Authorization}" />
+    </FlyoutItem>
+
+    <MenuItem Text="Выход" IconImageSource="exit_icon.png" StyleClass="MenuItemLayoutStyle" Clicked="ExitButtonClicked"/>
+
+    <Shell.FlyoutFooter>
+        <StackLayout>
+            <Label Text="GameVerse"
+                   TextColor="White"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+            <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}'}"
+                   TextColor="GhostWhite"
+                   FontSize="Medium"
+                   HorizontalOptions="Center" />
+        </StackLayout>
+    </Shell.FlyoutFooter>
+    
+</Shell>

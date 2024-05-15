@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GameVerse_App"
+             x:Class="GameVerse_App.ShopList" Appearing="ShopList_Appearing" Background="{StaticResource MainColor}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Frame Style="{StaticResource SearchBarFrame}">
+                <local:CustomEntry x:Name="SearchBar" Style="{StaticResource SearchBar}" TextChanged="SearchBar_TextChanged"/>
+            </Frame>
+        </Grid>
+        <Grid Grid.Row="1">
+            <ScrollView>
+                <FlexLayout x:Name="GameList" Style="{StaticResource GamesContainer}" />
+            </ScrollView>
+        </Grid>
+    </Grid>
+</ContentPage>
